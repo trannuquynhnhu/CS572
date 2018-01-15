@@ -8,7 +8,7 @@ class Musician{
 }
 
 const violinist = new Musician("Asaad");
-const pianist = new Musician("Thien");
+const pianist = new Musician("Clara Schumann");
 
 violinist.play("Beethoven's piece");
-pianist.play("Romantic");
+pianist.play("Mozart's sonate");
