@@ -1,0 +1,25 @@
+1. Sometimes, we want to use setImmediate instead of using setTimeout because:
+- setImmediate is similar to setTimeout(_, 0) which means the callback function will be put into the queues immediately, 
+but setTimeout callback function will be put at the Timer phase while the setImmediate callback function will be put at the Check phase
+of the queue.
+- As the result, the setImmediate will be executed faster than setTimeout.
+
+2. Explain the difference between setImmediate and process.nextTick
+- setImmediate put the callback function into the queue while process.nextTick put the callback function to another priority queue (called
+nextTick queue) and all the tasks in the nextTick queue will be executed right after the current operation is completed and before the tasks 
+in the 'normal' queue are executed. 
+- As the result, process.nextTick will be executed before setImmediate
+
+3. Name 10 global modules available in Node environment:
+- fs: to handle File System
+- events: to handle events
+- http: to make Nodejs act as a HTTP server
+- https: to make Nodejs act as a HTTPS server
+- net: to create server and client
+- os: provides information about operating System
+- path: to handle file paths
+- stream: to handle stream data
+- url: to parse URL strings
+- v8: to access information about V8 (Javascript engine)
+
+
