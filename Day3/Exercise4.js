@@ -12,7 +12,7 @@ function compress(){
     readStream.pipe(gzip).pipe(writeStream);
 }
 
-//Unzip the file "source.txt.gz" into "destination.txt"
+//Unzip the file "source2.txt.gz" into "destination.txt"
 function decompress(){ 
     const zipFile = __dirname + '/source2.txt.gz'; 
     const readStream = fs.createReadStream(zipFile);
