@@ -7,7 +7,10 @@ const fetch = require("node-fetch");
 app.engine("ejs", consolidate.ejs);
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
-app.enable("trust proxy");
+app.set("x-powered-by", false);
+app.enable("case sensitive routing");
+app.enable("strict routing");
+app.enable("view cache");
 
 app.get("*", function(request, response){
                 var promise = fetch("http://jsonplaceholder.typicode.com/users/");
