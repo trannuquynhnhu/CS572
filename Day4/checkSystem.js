@@ -1,6 +1,6 @@
 const os = require("os");
 
-function checkSystem(observer){
+function checkSystem(){
     const memorySize = os.totalmem();
     const cores = os.cpus();
     return{
@@ -8,6 +8,12 @@ function checkSystem(observer){
         cores: cores
     };
     
+}
+
+function myObservable(observer){
+    var infos = checkSystem();
+    observer.next(infos);
+    observer.complete();
 }
 
 const observer = {
@@ -31,4 +37,4 @@ const observer = {
     }
 };
 
-checkSystem(observer);
+myObservable(observer);
