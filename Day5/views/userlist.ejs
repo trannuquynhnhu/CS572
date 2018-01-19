@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <table>
+        <th>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Username</td>
+            <td>Email</td>
+            <td>City</td>
+            <td>Zip code</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Website</td>
+        </th>  
+        <%
+            for(var user of users){
+        %>        
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.city %></td>
+                <td><%= user.zipcode %></td>
+                <td><%= user.lat %></td>
+                <td><%= user.long %></td>
+                <td><%= user.website %></td>
+            </tr>
+        <%}%>     
+    </table>
+</body>
+</html>
