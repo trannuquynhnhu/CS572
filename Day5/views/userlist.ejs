@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
 <body>
     <table>
-        <th>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Username</td>
-            <td>Email</td>
-            <td>City</td>
-            <td>Zip code</td>
-            <td>Latitude</td>
-            <td>Longitude</td>
-            <td>Website</td>
-        </th>  
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Zip code</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Website</th>
+        </tr>  
         <%
             for(var user of users){
         %>        
@@ -21,10 +28,10 @@
                 <td><%= user.name %></td>
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
-                <td><%= user.city %></td>
-                <td><%= user.zipcode %></td>
-                <td><%= user.lat %></td>
-                <td><%= user.long %></td>
+                <td><%= user.address.city %></td>
+                <td><%= user.address.zipcode %></td>
+                <td><%= user.address.geo.lat %></td>
+                <td><%= user.address.geo.lng %></td>
                 <td><%= user.website %></td>
             </tr>
         <%}%>     
