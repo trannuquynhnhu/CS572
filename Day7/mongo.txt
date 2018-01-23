@@ -1,0 +1,20 @@
+db.books.insert(
+{
+"isbn": 1,
+"title": "MongoDB introduction"
+"authors": ["james bond", "batman"]
+"tagged": ["computer", "bigdata"]
+});
+
+db.students.insert(
+{
+"id": 1,
+"name": "Nhu",
+});
+
+db.borrow.insert(
+{
+"book": "MongoDB introduction",
+"student": "Nhu",
+"returnedDate": new Date("Jan 22, 2018");
+});
