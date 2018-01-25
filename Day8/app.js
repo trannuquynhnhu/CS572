@@ -82,8 +82,8 @@ app.get("/location/search/:category/:name?", function(request, response){
         });
         client.close();
     });
-})
+});
 
 app.listen(1234, function(){
     console.log("The server is listening on the port 1234");
-})
+});
