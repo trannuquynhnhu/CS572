@@ -2,8 +2,9 @@
 //"use strict";
 
 var express = require("express");
-var mongoClient = require("mongodb").MongoClient;
-var app = express();
+const mongoClient = require("mongodb").MongoClient;
+const app = express();
+
 
 app.use(express.json());
 app.post("/addLocation", function(request, response){
@@ -14,10 +15,10 @@ app.post("/addLocation", function(request, response){
         var doc = {
             name:       request.body.name,
             category:    request.body.category,
-            longtitude: request.body.longtitude,
-            latitude: request.body.latitude
+            position: request.body.position            
         }
-        db.collection("location").insertOne(doc, function(){
+        db.collection("location").createIndex({position: "2d"});
+        db.collection("location").insertOne(doc, function(){            
             console.log("Finish inserting a new location");
             response.send(doc);
         });
@@ -46,8 +47,7 @@ app.put("/updateLocation/:name", function(request, response){
         var db = client.db("homework8");
         var toUpdateObject = {            
             category: request.body.category,
-            longtitude: request.body.longtitude,
-            latitude: request.body.latitude
+            position: request.body.position            
         }
         db.collection("location").update({name: request.params.name}, toUpdateObject, function(err, numUpdated){
             console.log("Finish updating location " + numUpdated);
@@ -68,6 +68,17 @@ app.delete("/deleteLocation/:name", function(request, response){
         client.close();
     });
 });
+
+app.get("/location/search/:category/:name?", function(request, response){
+    const currentLocation = [-91.967291, 41.017945];
+    mongoClient.connect("mongodb://localhost:27017", function(error, client){
+        if(error) throw error;
+        var db = client.db("homework8");
+        const query = {}
+        db.collection("location").find(query).limit(3);
+        client.close();
+    });
+})
 
 app.listen(1234, function(){
     console.log("The server is listening on the port 1234");
