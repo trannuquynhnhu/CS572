@@ -1,0 +1,5 @@
+1) Search books with the field "tagged" so we will create an index on this field
+db.books.createIndex({"tagged": 1})
+
+2) Librarian can search the borrowed books of specific student so an index can be created based on field "student"
+db.borrow.createIndex({"student": 1})
