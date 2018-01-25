@@ -15,7 +15,7 @@ app.post("/addLocation", function(request, response){
         var doc = {
             name:       request.body.name,
             category:    request.body.category,
-            position: request.body.position            
+            point: request.body.point            
         }
         db.collection("location").createIndex({position: "2d"});
         db.collection("location").insertOne(doc, function(){            
@@ -47,7 +47,7 @@ app.put("/updateLocation/:name", function(request, response){
         var db = client.db("homework8");
         var toUpdateObject = {            
             category: request.body.category,
-            position: request.body.position            
+            point: request.body.point            
         }
         db.collection("location").update({name: request.params.name}, toUpdateObject, function(err, numUpdated){
             console.log("Finish updating location " + numUpdated);
@@ -74,8 +74,12 @@ app.get("/location/search/:category/:name?", function(request, response){
     mongoClient.connect("mongodb://localhost:27017", function(error, client){
         if(error) throw error;
         var db = client.db("homework8");
-        const query = {}
-        db.collection("location").find(query).limit(3);
+        const query = {$and: [{"category": request.params.category}, {"point":{$near: currentLocation}}]};
+        if(request.params.name) query["$and"].push({"name": request.params.name});
+        db.collection("location").find(query).limit(3, function(error, result){
+            if(error) throw error;
+            response.send(result);
+        });
         client.close();
     });
 })
