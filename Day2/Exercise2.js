@@ -16,14 +16,27 @@ const tree = {
 	}] 
 }; 
 
+// const find = fileName => tree => {  
+//     let result = false;      
+//     if(tree.files.length > 0 && tree.files.includes(fileName)){
+//         return true;        
+//     }    
+//     for(const subFolder of tree.subFolders){
+//         if(result === false){
+//             result = find(fileName)(subFolder);
+//         }        
+//     } 
+//     return result;        
+// }
+
 const find = fileName => tree => {  
     let result = false;      
     if(tree.files.length > 0 && tree.files.includes(fileName)){
-        return true;        
-    }    
-    for(const subFolder of tree.subFolders){
-        if(result === false){
-            result = find(fileName)(subFolder);
+        result = true;        
+	} 
+	for(const subFolder of tree.subFolders){   
+		if(result == false){			     
+			result = find(fileName)(subFolder);
         }        
     } 
     return result;        
