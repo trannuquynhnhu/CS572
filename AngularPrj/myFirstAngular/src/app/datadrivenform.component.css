@@ -1,0 +1,13 @@
+label{
+    display:block;
+    width: 50px;    
+}
+
+input{
+    width: 300px;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+

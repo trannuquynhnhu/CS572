@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'error',
+  selector: 'thankyou',
   template: `
-    <p>
-      The profile you are looking for is invalid!!!!!!!
-    </p>
+    <h1>
+      Thank you for submitting!!!!!
+    </h1>
   `,
   styles: []
 })
-export class ErrorComponent implements OnInit {
+export class ThankyouComponent implements OnInit {
 
   constructor() { }
 
